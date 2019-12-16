@@ -1,0 +1,8 @@
+FROM ubuntu:16.04
+MAINTAINER phanindra bonam
+RUN apt-get update
+RUN apt-get install -y openjdk-8-jdk
+ENV JAVA_HOME /usr
+ADD apache-tomcat-8.5.47.tar.gz /root
+COPY target/ganesh.war /root/apache-tomcat-8.5.47/webapps
+ENTRYPOINT /root/apache-tomcat-8.5.47/bin/startup.sh && bash
